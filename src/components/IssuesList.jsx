@@ -2,15 +2,15 @@ import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { IssueItem } from './IssueItem';
 
-export default function IssuesList({ labels }) {
+export default function IssuesList({ labels, status }) {
   const issuesQuery = useQuery(
-      [ 'issues', { labels } ],
+      [ 'issues', { labels, status } ],
       () => {
-        
+        const statusString = status ? `&status=${status}` : '';
         const labelsString = labels.map((label) =>
             `labels[]=${label}`).join('&');
         
-        return fetch(`/api/issues?${labelsString}`)
+        return fetch(`/api/issues?${labelsString}${statusString}`)
             .then(res => res.json());
       }
   );
