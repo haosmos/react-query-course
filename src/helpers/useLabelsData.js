@@ -5,6 +5,6 @@ export function useLabelsData() {
       [ 'labels' ],
       () => fetch('/api/labels').then(res => res.json())
   )
-  
+  // console.log("labelsQuery is: ", labelsQuery);
   return labelsQuery;
 }

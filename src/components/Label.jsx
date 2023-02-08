@@ -13,7 +13,7 @@ export function Label({ label }) {
     return null;
   }
 
-  console.log(labelObject);
+  // console.log("labelQuery is: ", labelObject);
 
   return (
       <span
