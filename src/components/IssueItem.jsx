@@ -15,10 +15,11 @@ export function IssueItem({
   createdDate,
   labels,
   status,
-}) {0
+}) {
   const assigneeUser = useUserData(assignee);
   const createdByUser = useUserData(createdBy);
   const queryClient = useQueryClient();
+  
   return (
       <li
           onMouseEnter={() => {
