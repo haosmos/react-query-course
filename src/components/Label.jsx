@@ -13,8 +13,6 @@ export function Label({ label }) {
     return null;
   }
 
-  // console.log("labelQuery is: ", labelObject);
-
   return (
       <span
           className={`label ${labelObject.color}`}

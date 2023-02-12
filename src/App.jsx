@@ -1,4 +1,5 @@
 import { Route, Routes, Link, useMatch } from "react-router-dom";
+import FetchingIndicator from './components/FetchingIndicator';
 import Issues from "./pages/Issues";
 import Issue from "./pages/Issue";
 import AddIssue from "./pages/AddIssue";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/add" element={<AddIssue />} />
         <Route path="/issue/:number" element={<Issue />} />
       </Routes>
+      <FetchingIndicator/>
     </div>
   );
 }
