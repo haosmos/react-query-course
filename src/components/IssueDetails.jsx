@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+// import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { relativeDate } from '../helpers/relativeDate';
 import { useUserData } from '../helpers/useUserData';
@@ -16,7 +17,7 @@ function useIssueData(issueNumber) {
 
 function useIssueComments(issueNumber) {
   return useQuery(
-      [ 'issue', issueNumber, 'comments' ],
+      [ 'issues', issueNumber, 'comments' ],
       ({ signal }) => {
         return fetch(`/api/issues/${issueNumber}/comments`, { signal })
             .then(res => res.json());

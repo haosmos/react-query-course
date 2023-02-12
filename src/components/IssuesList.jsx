@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useQuery, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
 import fetchWithError from '../helpers/fetchWithError';
@@ -17,7 +18,9 @@ export default function IssuesList({ labels, status }) {
             `labels[]=${label}`).join('&');
         
         const results = await fetchWithError(
-            `/api/issues?${labelsString}${statusString}`, { signal });
+            `/api/issues?${labelsString}${statusString}`,
+            { signal }
+        );
         
         results.forEach((issue) => {
           queryClient.setQueryData(
@@ -64,7 +67,8 @@ export default function IssuesList({ labels, status }) {
         
         <h2>Issues List {issuesQuery.fetchStatus === 'fetching'
                          ? <Loader />
-                         : null}</h2>
+                         : null}
+        </h2>
         {issuesQuery.isLoading ? (
             <p>Loading...</p>
         ) : issuesQuery.isError

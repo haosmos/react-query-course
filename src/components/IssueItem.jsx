@@ -4,6 +4,7 @@ import { relativeDate } from "../helpers/relativeDate";
 import { useUserData } from "../helpers/useUserData";
 import { Label } from "./Label";
 import { useQueryClient } from "react-query";
+// import { useQueryClient } from "@tanstack/react-query";
 import fetchWithError from "../helpers/fetchWithError";
 
 export function IssueItem({
@@ -22,11 +23,11 @@ export function IssueItem({
   
   return (
       <li
-          onMouseEnter={() => {
-            queryClient.prefetchQuery(["issues", number.toString()], () =>
+          onMouseEnter={async () => {
+            await queryClient.prefetchQuery(["issues", number.toString()], () =>
                 fetchWithError(`/api/issues/${number}`)
             );
-            queryClient.prefetchQuery(
+            await queryClient.prefetchQuery(
                 ["issues", number.toString(), "comments"],
                 () => fetchWithError(`/api/issues/${number}/comments`)
             );
