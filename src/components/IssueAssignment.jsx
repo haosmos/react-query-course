@@ -65,7 +65,12 @@ export default function IssueAssignment({ assignee, issueNumber }) {
               </div>
           )}
         </div>
-        <GoGear onClick={() => !usersQuery.isLoading && setMenuOpen((open) => !open)} />
+        <GoGear
+            onClick={
+              () => !usersQuery.isLoading &&
+                    setMenuOpen((open) => !open)
+            }
+        />
         {menuOpen && (
             <div className="picker-menu">
               {usersQuery.data?.map(user => (
