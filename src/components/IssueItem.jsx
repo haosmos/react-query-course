@@ -29,7 +29,7 @@ export function IssueItem({
             );
             await queryClient.prefetchInfiniteQuery(
                 ["issues", number.toString(), "comments"],
-                () => fetchWithError(`/api/issues/${number}/comments?page=1`)
+                () => fetchWithError(`/api/issues/${number}/comments`)
             );
           }}
       >
